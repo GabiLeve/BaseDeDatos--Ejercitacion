@@ -42,4 +42,16 @@ CREATE TABLE contiene(
 CREATE TABLE compuesto_por(
 	cod_art INT,
     cod_mat INT,
-    CONSTRAINT pk);
+    CONSTRAINT pkCompuesto_por PRIMARY KEY (cod_art, cod_mat),
+    CONSTRAINT fkCompuestoPor_articulo FOREIGN KEY (cod_art) REFERENCES articulo (cod_art),
+    CONSTRAINT fkCompuestoPor_material FOREIGN KEY (cod_mat) REFERENCES material (cod_mat));
+    
+CREATE TABLE provisto_por (
+	cod_mat INT,
+    cod_prov INT,
+    CONSTRAINT pkProvisto_por PRIMARY KEY (cod_mat, cod_prov),
+    CONSTRAINT fkProvistoPor_material FOREIGN KEY (cod_mat) REFERENCES material (cod_mat),
+    CONSTRAINT fkProvistoPor_proveedor FOREIGN KEY (cod_prov) REFERENCES proveedor (cod_prov));
+    
+    
+    
